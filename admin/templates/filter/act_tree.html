@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="{$ADMIN_URL_CSS}/treeview.css" type="text/css">
+<div class="tree" style="overflow: auto; padding-bottom: 50px;">
+	<ul style="width:{$x*70}px">
+		{section name=i loop=$arrCatTree}
+		<li>
+			<a href="?mod={$mod}&act=add&filter_id={$arrCatTree[i].filter_id}&{$returnExp}" title="Click để sửa"><strong>{$arrCatTree[i].name}</strong></a>
+			{assign var=arrCatTree1 value=$arrCatTree[i].subcat}
+			{if $core->callfunc('is_array', $arrCatTree1)==1}
+			<ul>
+				{section name=i1 loop=$arrCatTree1}				
+				<li>
+					<a href="?mod={$mod}&act=add&filter_id={$arrCatTree1[i1].filter_id}&{$returnExp}" title="Click để sửa">{$arrCatTree1[i1].name}</a>
+					{assign var=arrCatTree2 value=$arrCatTree1[i1].subcat}
+					{if $core->callfunc('is_array', $arrCatTree2)==1}
+					<ul>
+					{section name=i2 loop=$arrCatTree2}
+						<li>
+							<a href="?mod={$mod}&act=add&filter_id={$arrCatTree2[i2].filter_id}&{$returnExp}" title="Click để sửa">{$arrCatTree2[i2].name}</a>
+							{assign var=arrCatTree3 value=$arrCatTree2[i2].subcat}
+							{if $core->callfunc('is_array', $arrCatTree3)==1}
+							<ul>
+								{section name=i3 loop=$arrCatTree3}
+								<li>
+									<a href="?mod={$mod}&act=add&filter_id={$arrCatTree3[i3].filter_id}&{$returnExp}" title="Click để sửa">{$arrCatTree3[i3].name}</a>
+								</li>
+								{/section}
+							</ul>
+							{/if}
+						</li>					
+					{/section}
+					</ul>
+					{/if}
+				</li>
+				{/section}
+			</ul>	
+			{/if}		
+		</li>
+		{/section}
+	</ul>
+</div>

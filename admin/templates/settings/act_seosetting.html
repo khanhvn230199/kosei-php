@@ -1,0 +1,71 @@
+{$clsForm->showJS()}
+<div class="inner_head_title">
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<tr style="background:#FBFBFB">
+	<td width="55px" style="padding:5px;">
+	<a href="?mod={$mod}"><img src="{$ADMIN_URL_IMAGES}/largeicon/settingseo.png" border="0"/></a>
+	</td>
+	<td>
+	<span class="title1">{$core->getLang("SEOSettings")}</span><br />
+	<span class="title2">{$core->getLang("SEOSettings")} ({$lang_code_name})</span>
+	</td>
+	<td style="padding:5px;" align="right">
+			{$clsButtonNav->render()}		
+	</td>
+</tr>
+</table>
+</div>
+<form name="theForm" action="" method="post" id="theForm">
+<table width="100%" border="0">
+<tr>
+<td style="padding:10px" colspan="4">
+	<div style="padding-bottom:5px;font-size:14px; float:left">
+	<strong>{$core->getLang("SEOSettings")}</strong>
+	</div>
+	<div style="float:right;font-size:12px; width:30%; color:blue" align="right">
+	Ngôn ngữ: {$lang_code_name}
+	</div>
+</td>
+</tr>
+<tr>
+<td style="padding:0px 10px" width="100%" valign="top">
+	<table cellpadding="0" cellspacing="0" width="100%" border="0" class="girdtable">
+	<tr>
+		<td colspan="2" class="gridheader1">{$core->getLang("InputCorrectlyAllBelowFields")}</td>
+	</tr>
+	<tr>
+		<td class="gridrow" width="40%"> {$core->getLang("EnableURLRewriting")}</td>
+		<td class="gridrow1">
+		{$clsForm->showInput("enable_urlrewrite")}
+		</td>
+	</tr>
+	<tr>
+		<td class="gridrow">Tiêu đề site</td>
+		<td class="gridrow1">
+		{$clsForm->showInput("site_title")}
+		</td>
+	</tr>
+	<tr>
+		<td class="gridrow">Thẻ Meta-Description</td>
+		<td class="gridrow1">
+		{$clsForm->showInput("site_description")}
+		</td>
+	</tr>
+	<tr>
+		<td class="gridrow">Thẻ Meta-Keywords</td>
+		<td class="gridrow1">
+		{$clsForm->showInput("meta_keywords")}
+		</td>
+	</tr>
+	<tr>
+		<td class="gridrow2" width="40%"> Cho phép nối "Tiêu đề Site" vào tiêu đề các trang trong</td>
+		<td class="gridrow3">
+		{$clsForm->showInput("seo_configs[allow_append]")}
+		</td>
+	</tr>
+	</table>
+	<em><font style="font-size:10px">{$core->getLang("Note")}: * {$core->getLang("isrequired")}</font></em>
+</td>
+</tr>
+</table>
+</form>

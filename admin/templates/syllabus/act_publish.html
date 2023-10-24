@@ -1,0 +1,102 @@
+{literal}
+<script>
+function confirmDialog(btnValue) {
+	var total = 0;
+	var fmobj = document.theForm;
+	for (var i=0;i<fmobj.elements.length;i++) {
+	 var e = fmobj.elements[i];
+	 if ((e.name != 'allbox') && (e.type=='checkbox') && (!e.disabled)) {
+		 if (e.checked) total++;
+	 }
+	}
+	if (total==0){ 
+		alert('You must choose at least one!');
+		return false;
+	}
+	
+	document.theForm.btnSave.value= btnValue;
+	document.theForm.submit();
+	return true;
+}
+function confirmVerify(){
+	return confirmDialog("Verify");
+}
+function confirmUnVerify(){
+	return confirmDialog("UnVerify");
+}
+function confirmPublish() {
+	return confirmDialog("Publish");
+}
+function confirmUnPublish() {
+	return confirmDialog("UnPublish");
+}
+</script>
+{/literal}
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<tr style="background:#FBFBFB">
+<td width="55px" style="border-bottom:1px #CCCCCC solid;">
+<div style="padding:3px"><a href="?mod={$mod}"><img src="{$ADMIN_URL_IMAGES}/largeicon/window_earth.png" border="0"/></a></div>
+</td>
+<td style="color:#990000;border-bottom:1px #CCCCCC solid;">
+<font style="font-size:24px;"><b>{if $_LANG_ID ne "vn"}PUBLISH NEWS{else}{$clsDataGrid->getTitle()}{/if}</b></font><br />
+<font style="font-size:9px"><i>{if $_LANG_ID ne "vn"}{$clsDataGrid->getTitle()} {$core->getLang("Management")}{else}{$core->getLang("Management")} {$clsDataGrid->getTitle()}{/if}</i></font>
+</td>
+<td style="padding-right:10px; border-bottom:1px #CCCCCC solid;" align="right">
+<div>
+	<table cellpadding="2px" border="0">
+	<tr>
+		{$clsButtonNav->render()}		
+	</tr>
+	</table>
+</div>
+</td>
+</tr>
+</table>
+<form name="theForm" action="" method="post">
+<table width="100%" border="0">
+<tr>
+<td style="padding-left:10px;padding-right:10px">
+	<div style="padding-bottom:5px;font-size:14px;float:left">
+	<strong>{$core->getLang("ListOf")} {$clsDataGrid->getTitle()}</strong>
+	</div>
+	<div style="float:right;font-size:12px;" align="right">
+	{if $is_verify eq "1"}
+	<b>View Verified</b> |
+	{else}
+	<a href="?mod={$mod}&act=publish&is_verify=1" style="text-decoration:none">View Verified</a> | 
+	{/if}
+	{if $is_verify eq "0"}
+	<b>View Not Verified</b> |
+	{else}
+	<a href="?mod={$mod}&act=publish&is_verify=0" style="text-decoration:none">View Not Verified</a> |
+	{/if}
+	{if $is_online eq "1"}
+	<b>View Published</b> |
+	{else}
+	<a href="?mod={$mod}&act=publish&is_online=1" style="text-decoration:none">View Published</a> | 
+	{/if}
+	{if $is_online eq "0"}
+	<b>View Not Published</b> |
+	{else}
+	<a href="?mod={$mod}&act=publish&is_online=0" style="text-decoration:none">View Not Published</a> |
+	{/if}
+	{if $is_verify eq "" && $is_online eq ""}
+	<b>View All</b>
+	{else}
+	<a href="?mod={$mod}&act=publish" style="text-decoration:none">View All</a>
+	{/if}
+	</div>
+</td>
+</tr>
+<tr>
+<td style="padding-left:10px;padding-right:10px" width="100%" valign="top">
+	{$clsDataGrid->showDataGrid("theForm")}	
+</td>
+</tr>
+<tr>
+<td  style="padding-left:10px;padding-right:10px">
+	{$clsDataGrid->showPaging("theForm")}
+</td>
+</tr>
+</table>
+</form>

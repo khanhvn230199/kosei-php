@@ -1,0 +1,21 @@
+Admin Feedback tiêu đề 1
+====
+<html>
+<body>
+<p>Dear: %JOB_TITLE% %FULL_NAME%</p>
+
+<p>Tên đăng ký trên web %SITE_TITLE%</p>
+
+<pre>
+%PHONE% : điện thoại người gửi form
+%EMAIL% : email người gửi form
+%SENT_DATE%: thời gian gửi form</pre>
+
+<p>Thank you for sending us your information and requests!</p>
+
+<p>We will revise your information and contact with you in the shortest time!</p>
+
+<p>Best regards</p>
+
+</body>
+</html>

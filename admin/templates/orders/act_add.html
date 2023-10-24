@@ -1,0 +1,234 @@
+{literal}
+<style>
+.left_title{
+	background:#cecece;
+	font-size:11px;
+	color:#000000;
+	padding-left:10px;
+	line-height:25px;
+	font-weight:bold;
+	text-decoration:none;
+	text-transform:uppercase;	
+}
+.product_tbl{
+	width:100%;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+.product_tbl th{
+	text-align:left;
+	padding-left:0px;
+}
+.product_tbl td{
+	border-bottom:1px #CCCCCC dashed;
+	padding-top:5px;
+	font-size:12px;
+	padding-right:3px;
+}
+.product_tbl .scaledimg{
+	width:500px;
+}
+.product_img{
+	padding:5px;
+	width:100px;
+}	
+.labelleft{
+	float: left;
+}
+.labelright{
+	float:right;
+}
+.plabel{
+	clear:both;
+	border-bottom: 1px dashed #cecece;
+}
+</style>
+<script>
+function save() {
+	document.theForm.btnSave.value= "Save";
+	document.theForm.submit();
+	return true;
+}
+function confirmDelete2(){
+	if (confirm("Do you want to delete [OK]:Yes [Cancel]:No?")) {
+		document.theForm.btnDelete.value= 'Delete';
+		document.theForm.submit();
+		return true;
+	}
+	return false;
+}
+</script>
+{/literal}
+{include file="_block_inner_head_add.html"}
+<form name="theForm" action="" method="post">
+<input type='hidden' name='btnSave' id='btnSave' value=''>
+<input type='hidden' name='btnDelete' id='btnDelete' value=''>
+<table width="100%" border="0">
+<tr>
+<td style="padding:10px">
+	<div style="padding-bottom:5px;font-size:14px">
+	<strong>{$core->getLang("View_order")}:</strong>	#{$arrOneOrder.order_code}
+	</div>
+</td>
+</tr>
+<tr>
+<td style="padding-left:10px;padding-right:10px" width="100%" valign="top">
+	<table cellpadding="0" cellspacing="0" width="100%" border="0" class="girdtable">
+	<tr>
+		<td class="gridheader" align="center" width="50%">{$core->getLang("Cart_contents")}</td>
+		<td class="gridheader1" align="center">{$core->getLang("Customer_information")}</td>
+	</tr>
+	<tr>
+		<td class="gridrow2" valign="top" bgcolor="#FFF">
+
+	<div style="{if $arrOneOrder.total_item>5}height:500px; overflow:auto; border:1px #cecece solid{/if}">
+	<table width="100%" cellpadding="0" cellspacing="0" bgcolor="" border="0" class="product_tbl">
+	  <tr>
+		<th width="5%"  class="left_title" nowrap style="text-align:center">TT</th>
+		<th width="80px" class="left_title" nowrap style="text-align:center"></th>
+		<th class="left_title" nowrap style="text-align:center">Sản phẩm</th>
+		<th class="left_title" nowrap style="text-align:center">SL</th>
+		<th class="left_title" nowrap style="text-align:center">Giá</th>
+	  </tr>
+  	  {foreach key=k item=item from=$arrOneOrder.arrItem}
+  	  {if $item->itemId>0}
+		{math equation="x*y" x=$item->quantity y=$item->price assign=lastprice}
+		{assign var=price value=$core->callfunc('getPriceByDiscount', $item->price, $item->discount_type, $item->discount_value)}	  
+	  <tr>
+	  	<td style="padding-bottom:5px" align="center">{$smarty.section.id.rownum}</td>
+	  	<td align="center" style="padding-bottom:5px"><a href="?mod=orders&act=go&item_id={$item->itemId}" target="_blank" title="Chi tiết">
+	  	<img src="{$URL_UPLOADS}/{$item->image}" alt="{$item->name}" onerror="this.src='{$URL_UPLOADS}/nopic.jpg'" border="0" width="100"></a>
+		</td>
+		<td align="center" style="padding-bottom:5px"><a href="?mod=orders&act=go&item_id={$item->itemId}" target="_blank" title="Chi tiết">{$item->name}</a>		
+		<br><small>Ghi chú: {$item->note}</small>
+		</td>
+		<td align="center" style="padding-bottom:5px">{$item->quantity}</td>
+		<td align="center" style="padding-bottom:5px; color:red">{$lastprice|number_format}₫</td>
+	  </tr>
+	  {/if}
+	  {/foreach}
+	</table>
+	</div>
+
+		</td>
+		<td class="gridrow3" valign="top" bgcolor="#FFF">
+	<div align="justify" style="padding:5px; line-height:20px">
+	{assign var=st value=$arrOneOrder.status}
+	{assign var=tranport_method value=$arrOneOrder.tranport_method}
+	{assign var=payment_method value=$arrOneOrder.payment_method}
+	{assign var=payed value=$arrOneOrder.payed}
+	<div class="txt_black" style="text-transform:uppercase"><b>Thông tin Đơn hàng:</b></div>
+	<p class="plabel">
+		<label class="labelleft">- Mã đơn hàng:</label> <label class="labelright"><span style="font-size:16px; color:red; background-color:#FFCC00">{$arrOneOrder.order_code}</span></label>
+		<br style="clear:both"/>
+	</p>
+    <p class="plabel">
+        <label class="labelleft">- Trạng thái đơn hàng:</label> 
+        {if $st==2}
+        <label class="labelright text-success" style="font-size:16px; font-weight:bold;">{$status_name}</label>
+        {elseif $st==1}
+        <label class="labelright text-warning" style="font-size:16px; font-weight:bold;">{$status_name}</label>
+        {else}
+        <label class="labelright" style="font-size:16px; font-weight:bold;">{$status_name}</label>
+        {/if}		
+		<br style="clear:both"/>
+		<span style="text-align:right; display:block; font-style:italic;">{$arrOneOrder.status_txt}</span>		
+	</p>
+	<p class="plabel">
+	<label class="labelleft">- Ngày đặt hàng:</label> <label class="labelright">{$arrOneOrder.order_date|date_format:" %H:%M %d/%m/%Y"}</label>
+		<br style="clear:both"/>
+	</p>
+	<p class="plabel">
+	<label class="labelleft">- Tổng giá trị:</label> <label class="labelright" style="font-size:16px; font-weight:bold; color:red">{$core->call_func('number_format', $arrOneOrder.total_cost, 0, ',', '.')} VNĐ</label>
+		<br style="clear:both"/>
+	</p>
+	<!--<p class="plabel">-->
+	<!--<label class="labelleft">- Số tiền được giảm:</label> <label class="labelright" style="font-size:16px; font-weight:bold; color:blue"> - {$core->call_func('number_format', $arrOneOrder.discount, 0, ',', '.')}VNĐ</label>-->
+		<!--<br style="clear:both"/>-->
+	<!--</p>-->
+	<p class="plabel">
+	<label class="labelleft">- Số tiền phải thanh toán:</label> <label class="labelright" style="font-size:16px; font-weight:bold; color:red">{$core->call_func('number_format', $totalCostReal, 0, ',', '.')} 	VNĐ</label>
+		<br style="clear:both"/>
+	</p>
+	<p class="plabel">
+	<label class="labelleft">- Số lượng sản phẩm:</label> <label class="labelright">{$arrOneOrder.total_item}</label>
+		<br style="clear:both"/>
+	</p>
+	<p class="plabel">
+	<label class="labelleft">- Cách thức thanh toán:</label> <label class="labelright">{$paymentMethodList.$payment_method}</label>
+		<br style="clear:both"/>
+	</p>
+	<p class="plabel" style="display:;">
+	<label class="labelleft">- Trạng thái thanh toán:</label> <label class="labelright" style="text-align:right;">{if $arrOneOrder.payed==0}
+	<font color="red">Chưa</font>
+	<br>
+	<input type="submit" name="btnPayed" value=" Xác nhận đã thanh toán " style="font-weight:normal;" onclick="return confirm('Bạn đã nhận được tiền chưa\nOK: là đã nhận, Cancel: là bỏ qua?');"/>
+	{else}<span class='text-success'>Đã thanh toán</span>{/if}
+	<br>
+		{if $arrOneOrder.payed==1}
+	Chi tiết: (PayerID: {$arrOneOrder.payerID} | PaymentID: {$arrOneOrder.paymentID} | Token: {$arrOneOrder.paymentToken})
+	{/if}
+	
+	</label>
+		<br style="clear:both"/>
+	</p>
+	<div class="txt_black" style="text-transform:uppercase"><b>Người đặt hàng:</b></div>
+	<p class="plabel">
+	<label class="labelleft">- Họ tên:</label> <label class="labelright">{$arrOneOrder.c_fullname}</label>
+		<br style="clear:both"/>
+	</p>
+	<p class="plabel">
+	<label class="labelleft">- Email:</label> <label class="labelright">{$arrOneOrder.c_email}</label>
+		<br style="clear:both"/>
+	</p>
+	<p class="plabel">
+	<label class="labelleft">- Điện thoại:</label> <label class="labelright" style="font-size:16px; font-weight:bold; ">{$arrOneOrder.c_phone}</label>
+		<br style="clear:both"/>
+	</p>
+	<p class="plabel">
+	<label class="labelleft">- Địa chỉ:</label> <label class="labelright">{$arrOneOrder.c_address}</label>
+		<br style="clear:both"/>
+	</p>
+	<p class="plabel">
+	<label class="labelleft">- Ghi chú:</label> <label class="labelright">{$arrOneOrder.c_note}</label>
+		<br style="clear:both"/>
+	</p>	
+	</div>
+		
+
+<table cellpadding="5" cellspacing="5" border="0" width="100%">
+<tr>
+	<td align="right" style="padding-top:10px" width="30%">Chuyển trạng thái sang:</td>
+	<td style="padding-top:10px">
+	<select name="status" id="status">
+	{section name=i loop=$arrStatusOptions}
+	<option value="{$smarty.section.i.index}" {if $status==$smarty.section.i.index}selected{/if}>{$arrStatusOptions[i]}</option>
+	{/section}
+	</select>
+	</td>
+</tr>
+<tr>
+	<td align="right" style="padding-top:10px" valign="top">Dòng trạng thái:</td>
+	<td style="padding-top:10px">
+	<textarea name="status_txt" rows="2" style="width:100%">{$arrOneOrder.status_txt}</textarea>
+	</td>
+</tr>
+<tr>
+	<td align="right" style="padding-top:10px" valign="top">Admin ghi chú:</td>
+	<td style="padding-top:10px">
+	<textarea name="admin_note" rows="5" style="width:100%">{$arrOneOrder.admin_note}</textarea>
+	</td>
+</tr>
+<tr>
+	<td colspan="2" align="center">
+	<button type="submit" class="button" value=" Ghi lại " onclick="return save();">Ghi lại</button>
+	</td>
+</tr>
+</table>		
+		</td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
+</form>

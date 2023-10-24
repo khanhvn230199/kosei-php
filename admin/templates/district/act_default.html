@@ -1,0 +1,31 @@
+{include file="_block_inner_head.html"}
+<form name="theForm" action="" method="post" id="theForm">
+<table width="100%" border="0">
+<tr>
+<td style="padding:10px">
+	<div style="font-size:14px; float:left">
+	<strong>{$core->getLang("ListOf")} {$clsDataGrid->getTitle()}</strong>
+	<select name="s_province_id" onchange="document.getElementById('theForm').submit();">
+	<option value="0">Tất cả Tỉnh/TP</option>
+	{$htmlOptionProvince}
+	</select>
+	<input type="submit" name="btnFiler" value=" &gt;&gt; " />
+	</div>
+	<div style="float:right; font-size:12px">
+	<input type="text" name="s_keyword" value="{$s_keyword}" placeholder="Tìm kiếm"/>
+	<input type="submit" name="btnFiler" value=" &gt;&gt; " />
+	</div>
+</td>
+</tr>
+<tr>
+	<td style="padding:0px 10px" width="100%" valign="top">
+	{$clsDataGrid->showDataGrid("theForm")}
+	</td>
+</tr>
+<tr>
+	<td  style="padding:0px 10px">
+	{$clsDataGrid->showPaging("theForm")}
+	</td>
+</tr>
+</table>
+</form>

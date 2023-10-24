@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="?">VnCMS3.0</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+		<li class="nav-item {if $clsCP->getCurrentSection()==''}active{/if}">
+		  <a class="nav-link" href="?"><img src="{$ADMIN_URL_IMAGES}/adm3.png" border="0"> <span class='nav-sname'>Bảng điều khiển</span></a>
+		</li>
+		{$clsCP->showMenuHeader()}
+      	<li class="dropdown">
+		  <button class="btn btn-primary btn-sm dropdown-toggle mt-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    {$lang_code_name}
+		  </button>
+		  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		  	<h6 class="dropdown-header pl-2 text-muted">{$core->getLang("Data_language")}</h6>
+		    <a class="dropdown-item {if $lang_code eq 'jp'}active{/if}" href="#" onclick="return changeLanguageData('jp');">Tiếng nhật</a>
+		    <a class="dropdown-item {if $lang_code eq 'vn'}active{/if}" href="#" onclick="return changeLanguageData('vn');">Tiếng Việt</a>
+		  </div>		  
+		</li>
+		{if $_CONFIG.home_cache==1}
+		<li class="nav-item">
+			<a class="btn btn-sm btn-primary d-none d-lg-inline-block mt-1 mb-md-0 ml-md-1" href="?clearCache=1" title="Xóa cache trang chủ">Xóa Cache</a>
+		</li>
+		{/if}
+		<li class="nav-item">
+			<a class="btn btn-sm btn-primary d-none d-lg-inline-block mt-1 mb-md-0 ml-md-1" target="_blank" href="{$VNCMS_URL}" title="Xem Trang chủ"><img src="{$ADMIN_URL_IMAGES}/house.png" border="0"></a>
+		</li>
+    </ul>
+	<div class="dropdown d-none d-sm-block">
+      	<button class="btn btn-sm  btn-light dropdown-toggle" type="button" id="navbarDropdownExit" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         	<img src="{$ADMIN_URL_IMAGES}/icon/user1.png" border="0"> {$core->_USER.fullname}!
+        </button>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        	<span class="dropdown-item navbar-text text-secondary">
+        	{$core->getLang("Last_visit")}: <br>{$core->_USER.last_visit|date_format:"%Hh:%M' %m/%d/%Y"}
+  			</span>
+          <a class="dropdown-item" href="#" onclick="return logout()"><img src="{$ADMIN_URL_IMAGES}/close.png" border="0" style='width:12px; height:12px;'> {$core->getLang("Logout")}</a>
+        </div>
+    </div>	
+  </div>
+</nav>
+<form class="form-inline" method="POST" action="" id="fChangeLanguage" style="display:none">
+<input name="lang_id" id="lang_id" type="hidden" value="{$_LANG_ID}">
+<input name="lang_code" id="lang_code" type="hidden" value="{$lang_code}">
+</form>
+{literal}<script>
+function changeLanguageData(lang){
+	if ($("#lang_code").val()!=lang){
+		$("#lang_code").val(lang);
+		$("#fChangeLanguage").submit();
+	}
+	return false;
+}
+</script>{/literal}

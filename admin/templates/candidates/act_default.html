@@ -1,0 +1,40 @@
+{include file="_block_inner_head.html"}
+<form name="theForm" action="{$base_url}" method="post" id="theForm">
+    <table width="100%" border="0">
+        <tr>
+            <td style="padding:10px">
+                <div style="font-size:14px; float:left; width:30%">
+                    <strong>{$core->getLang("ListOf")} {$clsDataGrid->getTitle()}</strong>
+                </div>
+                <div style="float:right;font-size:12px;" align="right">
+                    Trình độ
+                    <select name="level_id" id="level_id">
+                        <option {if $level_id eq ""}selected{/if} value="">Chọn trình độ</option>
+                        {foreach from=$arrListLevel key=l item=level}
+                            <option value="{$level.level_id}" {if $level_id==$level.level_id}selected{/if}>{$level.name}</option>
+                        {/foreach}
+                    </select>
+                    Kỳ thi
+                    <select name="tt_id" id="tt_id">
+                        <option {if $tt_id eq ""}selected{/if} value="">Chọn kỳ thi</option>
+                        {foreach from=$arrListTrialTest key=t item=test}
+                            <option value="{$test.tt_id}" {if $tt_id==$test.tt_id}selected{/if}>{$test.name}</option>
+                        {/foreach}
+                    </select>
+                    Thời gian đăng ký từ: {$clsFromDate->showInputDate(false)}&nbsp;- đến&nbsp;{$clsToDate->showInputDate(false)}&nbsp;
+                    <input type="submit" value="Lọc" name="btnFilter"/>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:0px 10px" width="100%" valign="top">
+                {$clsDataGrid->showDataGrid("theForm")}
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:0px 10px">
+                {$clsDataGrid->showPaging("theForm")}
+            </td>
+        </tr>
+    </table>
+</form>

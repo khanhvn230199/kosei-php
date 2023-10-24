@@ -1,0 +1,15 @@
+Có thông tin đặt bàn mới (%C_EMAIL%)
+====
+<html>
+<body>
+&lt;p&gt;Ch&amp;agrave;o Admin,&lt;/p&gt;
+
+&lt;p&gt;C&amp;oacute; email %C_EMAIL% vừa đăng k&amp;yacute; nhận bản tin.&lt;/p&gt;
+
+&lt;p&gt;-----&lt;/p&gt;
+
+&lt;p style=&quot;color:red&quot;&gt;&lt;small&gt;Hệ thống gửi mail của %SITE_NAME%&#33;&#33;&#33;&lt;br /&gt;
+Đ&amp;acirc;y l&amp;agrave; email trả lời tự động, vui l&amp;ograve;ng kh&amp;ocirc;ng trả lời email n&amp;agrave;y&#33;&#33;&#33;&lt;/small&gt;&lt;/p&gt;
+
+</body>
+</html>

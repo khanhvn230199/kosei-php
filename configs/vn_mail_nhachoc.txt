@@ -1,0 +1,10 @@
+Nhắc học tiếp nè
+====
+<html>
+<body>
+<p>Bạn cần login vào web Kosei để học tiếp</p>
+
+<p>Xin chào</p>
+
+</body>
+</html>

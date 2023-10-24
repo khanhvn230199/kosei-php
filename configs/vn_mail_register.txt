@@ -1,0 +1,24 @@
+Đăng ký tài khoản tại koseionline.vn (chưa kích hoạt)
+====
+<html>
+<body>
+<p>Chào bạn %FULL_NAME%,</p>
+
+<p>Cảm ơn bạn đã đăng ký tài khoản tại <b>%SITE_NAME%</b>.</p>
+
+<p>- Tài khoản của bạn: <b>%USER_NAME%</b></p>
+
+<p>- Mật khẩu: <b>%USER_PASS%</b></p>
+
+<p style="color:red"><b>Để hoàn thành việc đăng ký tài khoản bạn vui lòng kích vào đường link dưới đây (hoặc sao chép và dán vào trình duyệt): %URL_ACTIVE%</b></p>
+
+<p>Nếu bạn cần biết thêm thông tin xin vui lòng liên hệ với chúng tôi qua website.</p>
+
+<p>Trân trọng, <strong>Bộ phận Chăm sóc Khách hàng</strong> Email: nhatngukosei@gmail.com | Hotline: 0966 026 133 - 0246 6868 362&nbsp;| Hỗ trợ: 24/7 (từ 08h- 21h, trừ CN)</p>
+
+<p>-----</p>
+
+<p style="color:red"><small>Hệ thống gửi mail của ClientWebsite!!! Đây là email trả lời tự động, vui lòng không trả lời email này!!!</small></p>
+
+</body>
+</html>

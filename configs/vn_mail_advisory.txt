@@ -1,0 +1,16 @@
+Đăng kí tư vấn Khóa học Online
+====
+<html>
+<body>
+<pre>
+THông báo từ %SITE_NAME%
+Bạn nhận được thông báo này vì có người đã đăng ký tư vấn trên trang của bạn!
+
+Họ tên: %FULL_NAME%
+SĐT: %PHONE%
+Email: %EMAIL%
+Thời gian gửi: %SENT_DATE%
+</pre>
+
+</body>
+</html>

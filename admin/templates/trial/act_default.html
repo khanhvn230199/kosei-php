@@ -1,0 +1,28 @@
+{include file="_block_inner_head.html"}
+<form name="theForm" action="" method="post" id="theForm">
+<table width="100%" border="0">
+<tr>
+<td style="padding:10px">
+	<div style="font-size:14px; float:left">
+	<strong>{$core->getLang("ListOf")} {$clsDataGrid->getTitle()}</strong> 
+	{if $arrParent.name ne ""}
+	[Trang cha: <b>{$arrParent.name}</b>]
+	{/if}
+	</div>
+	<div style="float:right;font-size:12px; width:30%; color:blue" align="right">
+	Ngôn ngữ: {$lang_code_name}
+	</div>
+</td>
+</tr>
+<tr>
+	<td style="padding:0px 10px" width="100%" valign="top">
+	{$clsDataGrid->showDataGrid("theForm")}
+	</td>
+</tr>
+<tr>
+	<td  style="padding:0px 10px">
+	{$clsDataGrid->showPaging("theForm")}
+	</td>
+</tr>
+</table>
+</form>

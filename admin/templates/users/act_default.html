@@ -1,0 +1,128 @@
+{include file="_block_inner_head.html"}
+<form name="theForm" action="" method="post" id="theForm">
+<table width="100%" border="0">
+<tr>
+<td style="padding:10px">
+	<div style="font-size:12px;float:right">
+		<input type="text" name="s_user_name" value="{$s_user_name}" style="width:100px" placeholder="Tên đăng nhập"/>
+		<input type="text" name="s_fullname" value="{$s_fullname}" style="width:100px" placeholder="Họ tên"/>
+		<input type="text" name="s_email" value="{$s_email}" style="width:100px" placeholder="Email"/>
+		<select name="s_gender">
+		<option value="">Giới tính</option>
+		<option value="0" {if $s_gender eq '0'}selected{/if}>Nam</option>
+		<option value="1" {if $s_gender eq '1'}selected{/if}>Nữ</option>
+		</select>
+		<select name="s_is_active">
+		<option value="">Trạng thái</option>
+		<option value="0" {if $s_is_active eq '0'}selected{/if}>Không hoạt động</option>
+		<option value="1" {if $s_is_active eq '1'}selected{/if}>Hoạt động</option>
+		</select>
+		<input type="submit" name="btnFilter" value="&nbsp;&nbsp;" id="btnSearch"/>	
+	</div>
+</td>
+</tr>
+<tr>
+	<td style="padding:0px 10px" width="100%" valign="top">
+	{$clsDataGrid->showDataGrid("theForm")}
+	</td>
+</tr>
+<tr>
+	<td  style="padding:0px 10px">
+	{$clsDataGrid->showPaging("theForm")}
+	</td>
+</tr>
+</table>
+</form>
+{literal}
+<script>
+function confirmUnBan() {
+	var total = 0;
+	var fmobj = document.theForm;
+	for (var i=0;i<fmobj.elements.length;i++) {
+	 var e = fmobj.elements[i];
+	 if ((e.name != 'allbox') && (e.type=='checkbox') && (!e.disabled)) {
+		 if (e.checked) total++;
+	 }
+	}
+	if (total==0){ 
+		alert('You must choose at least one!');
+		return false;
+	}
+	document.theForm.btnSave.value= "UnBan";
+	document.theForm.submit();
+	return true;
+}
+function confirmBan(){
+	var total = 0;
+	var fmobj = document.theForm;
+	for (var i=0;i<fmobj.elements.length;i++) {
+	 var e = fmobj.elements[i];
+	 if ((e.name != 'allbox') && (e.type=='checkbox') && (!e.disabled)) {
+		 if (e.checked) total++;
+	 }
+	}
+	if (total==0){ 
+		alert('You must choose at least one!');
+		return false;
+	}
+	document.theForm.btnSave.value= "Ban";
+	document.theForm.submit();
+	return true;
+}
+function confirmSuspend(){
+	var total = 0;
+	var fmobj = document.theForm;
+	for (var i=0;i<fmobj.elements.length;i++) {
+	 var e = fmobj.elements[i];
+	 if ((e.name != 'allbox') && (e.type=='checkbox') && (!e.disabled)) {
+		 if (e.checked) total++;
+	 }
+	}
+	if (total==0){ 
+		alert('You must choose at least one!');
+		return false;
+	}
+	document.theForm.action = "?mod=user&act=dosuspend";
+	document.theForm.btnSave.value= "Suspend";
+	document.theForm.submit();
+	return true;
+}
+function confirmDelete1(){
+	var total = 0;
+	var fmobj = document.theForm;
+	for (var i=0;i<fmobj.elements.length;i++) {
+	 var e = fmobj.elements[i];
+	 if ((e.name != 'allbox') && (e.type=='checkbox') && (!e.disabled)) {
+		 if (e.checked) total++;
+	 }
+	}
+	if (total==0){ 
+		alert('You must choose at least one!');
+		return false;
+	}
+	document.theForm.action = "?mod=user&act=dodelete";
+	document.theForm.btnSave.value= "Suspend";
+	document.theForm.submit();
+	return true;
+}
+
+function confirmPending() {
+	var total = 0;
+	var fmobj = document.theForm;
+	for (var i=0;i<fmobj.elements.length;i++) {
+	 var e = fmobj.elements[i];
+	 if ((e.name != 'allbox') && (e.type=='checkbox') && (!e.disabled)) {
+		 if (e.checked) total++;
+	 }
+	}
+	if (total==0){ 
+		alert('You must choose at least one!');
+		return false;
+	}
+	document.theForm.action = "?mod=user&act=dopending";
+	document.theForm.btnSave.value= "Active";
+	document.theForm.submit();
+	return true;
+}
+</script>
+{/literal}

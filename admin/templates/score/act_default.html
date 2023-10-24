@@ -1,0 +1,56 @@
+{include file="_block_inner_head.html"}
+<form name="theForm" action="{$base_url}" method="post" id="theForm">
+    <table width="100%" border="0">
+        <tr>
+            <td style="padding:10px">
+                <div style="font-size:14px; float:left; width:30%">
+                    <strong>{$core->getLang("ListOf")} {$clsDataGrid->getTitle()}</strong>
+                </div>
+                <div style="float:right;font-size:12px;" align="right">
+                    <span class="mr-2">Kỳ thi</span>
+                    <select name="tt_id" id="tt_id" onchange="this.form.submit()">
+                        {foreach from=$trialTests key=t item=trial}
+                            <option value="{$trial.tt_id}" {if $tt_id eq $trial.tt_id} selected {/if}>{$trial.name}</option>
+                        {/foreach}
+                    </select>
+                    <input type="hidden" name="old_tt_id" value="{$tt_id}">
+                    <span class="mr-2 ml-3">Bài thi</span>
+                    <select name="test_id" id="test_id" onchange="this.form.submit()">
+                        {if $tests}
+                        {foreach from=$tests key=t item=test}
+                            <option value="{$test.test_id}" {if $test_id eq $test.test_id} selected {/if}>{$test.name}</option>
+                        {/foreach}
+                        {else}
+                            <option value="0">-- Chưa có bài thi nào --</option>
+                        {/if}
+                    </select>
+
+                    <!-- <input type="submit" value="Lọc" name="btnFilter"/> -->
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:0px 10px" width="100%" valign="top">
+                {if !$trialTests}
+                    <h3>Chưa có kỳ thi nào được tạo, vui long quay lại sau!</h3>
+                {elseif !$tests}
+                    <h3>Chưa có bài thi nào được tạo cho kỳ thi này, vui lòng quay lại sau!</h3>
+                {else}
+                    {$clsDataGrid->showDataGrid("theForm")}
+                {/if}
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:0px 10px">
+                {$clsDataGrid->showPaging("theForm")}
+            </td>
+        </tr>
+    </table>
+</form>
+
+<style>
+    .gridrow2,
+    .gridrow3 {
+        border-bottom: 1px solid #ccc !important;
+    }
+</style>

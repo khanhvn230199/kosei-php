@@ -1,0 +1,27 @@
+Đăng ký tài khoản tại ClientWebsite (chưa kích hoạt)
+====
+<html>
+<body>
+<p>Chào bạn %FULL_NAME%,</p>
+
+<p>Cảm ơn bạn đã đăng ký tài khoản tại <b>%SITE_NAME%</b>.</p>
+
+<p>- Tài khoản của bạn: <b>%USER_NAME%</b><br />
+- Mật khẩu: <b>%USER_PASS%</b></p>
+
+<p style="color:red"><b>Để hoàn thành việc đăng ký tài khoản bạn vui lòng kích vào đường link dưới đây (hoặc sao chép và dán vào trình duyệt): %URL_ACTIVE%</b></p>
+
+<p>Nếu bạn cần biết thêm thông tin xin vui lòng liên hệ với chúng tôi qua website.</p>
+
+<p>Trân trọng,</p>
+
+<p><strong>Bộ phận Chăm sóc Khách hàng</strong></p>
+
+<p>Email: customer@ClientWebsite | Hotline: 19006868 | Hỗ trợ: 24/7 (từ 08h-18h, trừ CN)</p>
+
+<p>-----</p>
+
+<p style="color:red"><small>Hệ thống gửi mail của ClientWebsite!!! Đây là email trả lời tự động, vui lòng không trả lời email này!!!</small></p>
+
+</body>
+</html>

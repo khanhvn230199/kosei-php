@@ -1,0 +1,118 @@
+<link href="{$ADMIN_URL_CSS}/jquery.tagit.css" rel="stylesheet" type="text/css">
+<link href="{$ADMIN_URL_CSS}/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
+<script src="{$ADMIN_URL_JS}/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="{$ADMIN_URL_JS}/tag-it.min.js" type="text/javascript" charset="utf-8"></script>
+
+
+{include file="_block_inner_head_add.html"}
+<form name="theForm" action="" method="post">
+    <table width="100%" border="0">
+        <td style="padding:10px">
+            <div style="padding-bottom:5px; font-size:14px; float:left">
+                <strong>
+                    {if $clsForm->pval ne ""}
+                        {$core->getLang("Edit")} {$clsForm->getTitle()}: #{$clsForm->pval}
+                    {else}
+                        {$core->getLang("Add")} {$clsForm->getTitle()}
+                    {/if}
+                </strong>
+                {if $arrParent.name ne ""}
+                    [Bài giảng cha: <b>{$arrParent.name}</b>]
+                {/if}
+            </div>
+            <div style="float:right;font-size:12px; color:blue" align="right">
+                Ngôn ngữ: {$lang_code_name}
+            </div>
+        </td>
+        </tr>
+        <tr>
+            <td style="padding:0px 10px" width="100%" valign="top">
+                <input type="hidden" id="is_post" value="1"/>
+                {$clsForm->showJS()}
+                <table cellpadding="0" cellspacing="0" width="100%" border="0" class="girdtable">
+                    <tr>
+                        <td colspan="2" class="gridheader1">{$core->getLang("InputCorrectlyAllBelowFields")}</td>
+                    </tr>
+                    {if $clsForm->isValid ne 1}
+                    <tr>
+                        <td class="gridrow1" style="color:red; padding:5px" colspan="2">
+                            {$clsForm->showAllError()}
+                        </td>
+                    </tr>
+                    {/if}
+                    {$clsForm->showForm()}
+
+                </table>
+                <em><font style="font-size:10px">{$core->getLang("Note")}: * {$core->getLang("isrequired")}</font></em>
+            </td>
+        </tr>
+        <tr style="background:#FBFBFB">
+            <td style="padding-right:10px; border-bottom:1px #CCCCCC solid;" align="center">
+                <div class="button_group">
+                    <table cellpadding="2px" border="0">
+                        <tr>
+                            {$clsButtonNav->last_render}
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+</form>
+<style type="text/css">
+    #tr_compare_maychieu table {
+        display: none;
+    }
+
+    #tr_compare_phich table {
+        display: none;
+    }
+
+    #tr_compare_maychieu .gridrow {
+        color: red;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    #tr_compare_phich .gridrow {
+        color: red;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    select#str_filter_id option {
+        width: 32%;
+        float: left;
+        padding: 5px;
+        border-right: 1px solid #ebebeb;
+        border-bottom: 1px solid #ebebeb;
+    }
+
+    select#str_filter_id option.nguyenduc {
+        background: rgba(246, 78, 0, 0.62);
+        color: #fff;
+        padding: 5px;
+        width: 100% !important;
+        cursor: no-drop;
+        font-weight: bold;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+</style>
+<script>
+    var sampleTags = [{$sampleTags}];
+    var relatedProducts = [{$relatedProducts}];
+</script>
+{literal}
+<script>
+    $('#tags').tagit({
+        availableTags: sampleTags,
+        allowSpaces: true
+    });
+    $('#related_str').tagit({
+        availableTags: relatedProducts,
+        allowSpaces: true
+    });
+</script>
+{/literal}

@@ -1,0 +1,51 @@
+{include file="_block_inner_head_add.html"}
+<form name="theForm" action="" method="post">
+<table width="100%" border="0">
+<tr>
+<td style="padding:10px" colspan="4">
+	<div style="padding-bottom:5px; font-size:14px; float:left">
+	<strong>{if $clsForm->pval ne ""}{$core->getLang("Edit")} {$clsForm->getTitle()}: #{$clsForm->pval}
+			{else}{$core->getLang("Add")} {$clsForm->getTitle()}
+			{/if}</strong>
+	</div>
+	<div style="float:right;font-size:12px; color:blue" align="right">
+	Ngôn ngữ: {$lang_code_name}
+	</div>
+</td>
+</tr>
+<tr>
+<td style="padding:0px 10px" width="100%" valign="top">
+	<input type="hidden" id="is_page" value="1" />
+	{$clsForm->showJS()}
+	<table cellpadding="0" cellspacing="0" width="100%" border="0" class="girdtable">
+	<tr>
+		<td colspan="2" class="gridheader1">{$core->getLang("InputCorrectlyAllBelowFields")}</td>
+	</tr>
+	{if $clsForm->isValid ne 1}
+	<tr>
+		<td class="gridrow1" style="color:red; padding:5px" colspan="2">
+		{$clsForm->showAllError()}
+		</td>
+	</tr>
+	{/if}
+	{$clsForm->showForm()}
+	</table>
+	<em><font style="font-size:10px">{$core->getLang("Note")}: * {$core->getLang("isrequired")}</font></em>
+	<p align="center"><b>Xem trước Ảnh thumbnail và Video:</b></p>
+	<div  id="preview_video" style="padding:10px; width:1020px; margin:0px auto">
+	<img src="http://i3.ytimg.com/vi/111/hqdefault.jpg" align="left" height="315">
+	<iframe style="float:right" width="560" height="315" src="https://www.youtube.com/embed/111" frameborder="0" allowfullscreen></iframe></div>	
+</td>
+</tr>
+</table>
+</form>
+{literal}
+<script>
+function show_preview_video(obj){
+	var yb_id = $(obj).val();
+	var embed = '<img src="http://i3.ytimg.com/vi/' + yb_id + '/hqdefault.jpg" align="left" height="315"><iframe style="float:right" width="560" height="315" src="https://www.youtube.com/embed/' + yb_id + '" frameborder="0" allowfullscreen></iframe>';
+	$("#preview_video").html(embed);
+}
+show_preview_video($("#yb_id"));
+</script>
+{/literal}

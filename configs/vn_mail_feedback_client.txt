@@ -1,0 +1,21 @@
+Feedback tiêu đề 1
+====
+<html>
+<body>
+<p>Dear: %JOB_TITLE% %FULL_NAME%</p>
+
+<p>Tên đăng ký trên web %SITE_TITLE%</p>
+
+<pre>
+%PHONE% : điện thoại người gửi form
+%EMAIL% : email người gửi form
+%SENT_DATE%: thời gian gửi form</pre>
+
+<p>Cảm ơn bạn đã gửi cho chúng tôi thông tin và yêu cầu của bạn!</p>
+
+<p>Chúng tôi sẽ sửa lại thông tin của bạn và liên lạc với bạn trong thời gian ngắn nhất!</p>
+
+<p>Trân trọng</p>
+
+</body>
+</html>

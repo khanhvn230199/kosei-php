@@ -1,0 +1,36 @@
+{include file="_block_inner_head_add.html"}
+<form name="theForm" action="" method="post">
+<table width="100%" border="0">
+<tr>
+<td style="padding:10px">
+	<div style="padding-bottom:5px;font-size:14px; float:left">
+	<strong>{if $clsForm->pval ne ""}{$core->getLang("Edit")} Slide: #{$clsForm->pval}
+			{else}{$core->getLang("Add")} Slide
+			{/if}</strong>
+	</div>
+	<div style="float:right;font-size:12px; color:blue" align="right">
+	Ngôn ngữ: {$lang_code_name}
+	</div>
+</td>
+</tr>
+<tr>
+<td style="padding-left:10px;padding-right:10px" width="100%" valign="top">
+	{$clsForm->showJS()}
+	<table cellpadding="0" cellspacing="0" width="100%" border="0" class="girdtable">
+	<tr>
+		<td colspan="2" class="gridheader1">{$core->getLang("InputCorrectlyAllBelowFields")}</td>
+	</tr>
+	{if $clsForm->isValid ne 1}
+	<tr>
+		<td class="gridrow1" style="color:red; padding:5px" colspan="2">
+		{$clsForm->showAllError()}
+		</td>
+	</tr>
+	{/if}
+	{$clsForm->showForm()}
+	</table>
+	<em><font style="font-size:10px">{$core->getLang("Note")}: * {$core->getLang("isrequired")}</font></em>
+</td>
+</tr>
+</table>
+</form>

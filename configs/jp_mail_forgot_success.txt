@@ -1,0 +1,28 @@
+Mật khẩu mới tại ClientWebsite
+====
+<html>
+<body>
+<p>Chào bạn %FULL_NAME%,</p>
+
+<p>Bạn đã tạo lại mật khẩu mới như sau, bạn hãy nhớ mật khẩu này để đăng nhập vào %SITE_NAME%:</p>
+
+<p>- Tài khoản của bạn: <b>%USER_NAME%</b></p>
+
+<p>- Mật khẩu: <b>%USER_PASS%</b> <i>(sau khi đăng nhập nên đổi mật khẩu khác)</i></p>
+
+<p>Ngày bây giờ bạn có thể <a href="http://ClientWebsite/login" target="_blank">Đăng nhập</a> vào tài khoản tại <b>%SITE_NAME%</b> !</p>
+
+<p>Nếu bạn cần biết thêm thông tin xin vui lòng liên hệ với chúng tôi qua website.</p>
+
+<p>Trân trọng,</p>
+
+<p><strong>Bộ phận Chăm sóc Khách hàng</strong></p>
+
+<p>Email: customer@ClientWebsite | Hotline: 19006868 | Hỗ trợ: 24/7 (từ 08h-18h, trừ CN)</p>
+
+<p>-----</p>
+
+<p style="color:red"><small>Hệ thống gửi mail của ClientWebsite!!! Đây là email trả lời tự động, vui lòng không trả lời email này!!!</small></p>
+
+</body>
+</html>

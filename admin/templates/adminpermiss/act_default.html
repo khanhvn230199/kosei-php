@@ -1,0 +1,84 @@
+{literal}
+<script>
+function CheckAll(cb) {
+	 var fmobj = document.theForm;
+	 for (var i=0;i<fmobj.elements.length;i++) {
+		 var e = fmobj.elements[i];
+		 if ((e.name != 'allbox') && (e.type=='checkbox') && (!e.disabled)) {
+			 e.checked = cb;
+		 }
+	 }
+	 return false;
+}
+</script>
+{/literal}
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<tr style="background:#FBFBFB">
+<td width="55px" style="border-bottom:1px #CCCCCC solid;">
+<div style="padding:3px"><a href="?mod={$mod}"><img src="{$ADMIN_URL_IMAGES}/largeicon/useradmin.png" border="0"/></a></div>
+</td>
+<td style="color:#990000;border-bottom:1px #CCCCCC solid;">
+<font style="font-size:24px;"><b>{if $_LANG_ID ne "vn"}{$clsForm->getTitle()|upper}{else}{$clsForm->getTitle()}{/if}</b></font><br />
+<font style="font-size:9px"><i>{if $_LANG_ID ne "vn"}{$clsForm->getTitle()} {$core->getLang("Management")}{else}{$core->getLang("Management")} {$clsForm->getTitle()}{/if}</i></font>
+</td>
+<td style="padding-right:10px; border-bottom:1px #CCCCCC solid;" align="right">
+<div>
+	<table cellpadding="2px" border="0">
+	<tr>
+		{$clsButtonNav->render()}		
+	</tr>
+	</table>
+</div>
+</td>
+</tr>
+</table>
+<form name="theForm" action="" method="post">
+<table width="100%" border="0">
+<tr>
+<td style="padding-left:10px;padding-right:10px" colspan="4">
+	<div style="padding-bottom:5px;font-size:14px">
+	<strong>{if $clsForm->pval ne ""}{$core->getLang("Edit")} {$clsForm->getTitle()}: #{$clsForm->pval}
+			{else}{$core->getLang("Add")} {$clsForm->getTitle()}
+			{/if}</strong>
+	</div>
+</td>
+</tr>
+<tr>
+<td style="padding-left:10px;padding-right:10px" width="100%" valign="top">
+	{$clsForm->showJS()}
+	<table cellpadding="0" cellspacing="0" width="100%" border="0" class="gridtable">
+	<tr>
+		<td colspan="2" class="gridheader1">{$core->getLang("InputCorrectlyAllBelowFields")}<Br />
+		
+		</td>
+	</tr>
+	{if $clsForm->isValid ne 1}
+	<tr>
+		<td class="gridrow1" style="color:red; padding:5px" colspan="2">
+		{$clsForm->showAllError()}
+		</td>
+	</tr>
+	{/if}
+	<tr>
+		<td class="gridrow" width="40%">Admin Name</td>
+		<td class="gridrow1">{$clsForm->showInput('user_id')}</td>
+	</tr>
+	<tr>
+		<td class="gridrow2">Allow access on Modules</td>
+		<td class="gridrow3">
+		<a href="" onclick="return CheckAll(1);">Check All</a> | <a href="" onclick="return CheckAll(0);">UnCheck All</a>
+		<br />
+		{section name=id loop=$default_permiss_key}
+		{assign var=key value=$default_permiss_key[id]}
+		<input type="checkbox" name="permiss_array[{$key}]" value="1" {if $permiss_array[$key] eq 1}checked{/if}
+		{if ($key eq 'adminmangement' || $key eq 'adminpermissions')}disabled{/if}
+		/> {$default_permiss_name[$key]}<br />
+		{/section}
+		</td>
+	</tr>
+	</table>
+	<em><font style="font-size:10px">{$core->getLang("Note")}: * {$core->getLang("isrequired")}</font></em>
+</td>
+</tr>
+</table>
+</form>

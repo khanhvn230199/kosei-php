@@ -1,0 +1,123 @@
+{literal}
+<script>
+function store(){
+	var total = 0;
+	var fmobj = document.theForm;
+	for (var i=0;i<fmobj.elements.length;i++) {
+	 var e = fmobj.elements[i];
+	 if ((e.name != 'allbox') && (e.type=='checkbox') && (!e.disabled)) {
+		 if (e.checked) total++;
+	 }
+	}
+	if (total==0){ 
+		alert('You must choose at least one!');
+		return false;
+	}
+	if (confirm('Do you want to restore the selected items [OK]:Yes [Cancel]:No?')){
+		document.theForm.btnRestore.value= "Restore";
+		document.theForm.submit();
+		return true;
+	}
+	return false;
+}
+function confirmDelete(){
+	var total = 0;
+	var fmobj = document.theForm;
+	for (var i=0;i<fmobj.elements.length;i++) {
+	 var e = fmobj.elements[i];
+	 if ((e.name != 'allbox') && (e.type=='checkbox') && (!e.disabled)) {
+		 if (e.checked) total++;
+	 }
+	}
+	if (total==0){ 
+		alert('You must choose at least one!');
+		return false;
+	}
+	if (confirm('Do you want to delete the selected items [OK]:Yes [Cancel]:No?')){
+		document.theForm.btnDelete.value= "Delete";
+		document.theForm.submit();
+		return true;
+	}
+	return false;
+}
+function CheckAll(cb) {
+	 var fmobj = document.theForm;
+	 for (var i=0;i<fmobj.elements.length;i++) {
+		 var e = fmobj.elements[i];
+		 if ((e.name != 'allbox') && (e.type=='checkbox') && (!e.disabled)) {
+			 e.checked = cb;
+		 }
+	 }
+	 return false;
+}
+</script>
+{/literal}
+<div class="inner_head_title">
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<tr style="background:#FBFBFB">
+	<td width="55px" style="padding:5px;">
+		<a href="?mod={$mod}"><img src="{$clsCP->getImgSrc()}" border="0"/></a>
+	</td>
+	<td>
+	<span class="title1">{$core->getLang("RecycleBin")}</span><br />
+	<span class="title2">{$core->getLang("RecycleBin")}</span>
+	</td>
+	<td style="padding:5px;" align="right">
+		{$clsButtonNav->render()}		
+	</td>
+</tr>
+</table>
+</div>
+<form name="theForm" action="" method="post">
+<input type="hidden" name="btnRestore" value="" />
+<input type="hidden" name="btnDelete" value="" />
+<table width="100%" border="0">
+<tr>
+<td style="padding:10px">
+	<div style="padding-bottom:5px;font-size:14px">
+	<strong>List of Deleted Objects:</strong> 
+	<a href="" onclick="return CheckAll(1);">{$core->getLang("CheckAll")}</a> | <a href="" onclick="return CheckAll(0);">{$core->getLang("UnCheckAll")}</a>
+	</div>
+</td>
+</tr>
+<tr>
+<td style="padding-left:10px;padding-right:10px" width="100%" valign="top">
+	
+<table cellpadding="5" cellspacing="5" border="0">
+<tr>
+{section name=id loop=$arrListItem}
+	<td>
+<div style="width:180px; border:1px solid #CCCCCC; color:#999999; font-size:10px" align="center">
+<a href="?mod=recyclebin&act=detail&id={$arrListItem[id].id}" style="text-decoration:none" title="View Object Detail"><div style="border-bottom:1px solid #CCCCCC; font-size:11px; background:#666666; color:#F7F7F7"><b>{$arrListItem[id].objname}</b></div></a>
+{$arrListItem[id].objtitle}
+<br>
+<input type="checkbox" name="checkList[]" value="{$arrListItem[id].id}"/>
+<div style="border-top:1px solid #CCCCCC;">Deleted at {$arrListItem[id].del_date|date_format:"%m/%d/%Y, %H:%M"} <br>
+by {$arrListItem[id].user_name}</div>
+</div>
+	
+	</td>
+{if $smarty.section.id.rownum%5==0}
+	</tr>
+	<tr>
+{/if}
+{sectionelse}
+	<tr>
+		<td style="color:#FF0000"><b>{$core->getLang("Empty")}!</b></td>
+	</tr>
+{/section}
+</tr>
+</table>
+	
+</td>
+</tr>
+<tr>
+	<td style="padding-left:10px;padding-right:10px; font-size:12px"><div style="float:left; display:inline">{$core->getLang("Total")}: {$totalItem} {$core->getLang("object")}(s)</div>
+<div style="float:right;">	
+{if $prevurl ne ""}<a href="{$prevurl}">{$core->getLang("Prev")}</a>{else}{$core->getLang("Prev")}{/if} | {$page} |
+{if $nexturl ne ""}<a href="{$nexturl}">{$core->getLang("Next")}</a>{else}{$core->getLang("Next")}{/if}
+</div>
+</td>
+</tr>
+</table>
+</form>

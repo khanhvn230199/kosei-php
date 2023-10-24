@@ -1,0 +1,65 @@
+{literal}
+<script>
+function confirmDialog(btnValue) {
+	document.theForm.btnSave.value= btnValue;
+	document.theForm.submit();
+	return true;
+}
+function confirmVerify(){
+	return confirmDialog("Verify");
+}
+function confirmUnVerify(){
+	return confirmDialog("UnVerify");
+}
+function confirmPublish() {
+	return confirmDialog("Publish");
+}
+function confirmUnPublish() {
+	return confirmDialog("UnPublish");
+}
+function confirmDelete2(){
+	document.theForm.btnDelete.value= 'Delete';
+	document.theForm.submit();
+	return true;
+}
+</script>
+{/literal}
+<div class="inner_head_title">
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<tr style="background:#FBFBFB">
+	<td width="55px" style="padding:5px;">
+		<a href="?mod={$mod}"><img src="{$ADMIN_URL_IMAGES}/largeicon/news.png" border="0"/></a>
+	</td>
+	<td>
+	<span class="title1">PUBLISH POST</span><br />
+	<span class="title2">Post Management</span>
+	</td>
+	<td style="padding:5px;" align="right">
+		{$clsButtonNav->render()}		
+	</td>
+</tr>
+</table>
+</div>
+<form name="theForm" action="" method="post" >
+<input type="hidden" value="{$arrOneNews.news_id}" name="checkList[]"/>
+<input type='hidden' name='btnSave' id='btnSave' value=''>
+<input type='hidden' name='btnDelete' id='btnDelete' value=''>
+</form>
+<div style="padding:10px; margin:0px auto">
+<table border="0" cellpadding="5" cellspacing="10" width="100%" style="border:#CCCCCC 1px dotted; max-width:1000px">
+<tr>
+	<td style="border-bottom:1px dotted #CCCCCC">
+<b style="font-size:14px; color:#990000"><img src="{$ADMIN_URL_IMAGES}/document_view.png" border="0" align="left"/>Preview</b></td>
+</tr>
+<tr>
+	<td height="25"><span class="txt_menu" style="padding-left:0px">{$arrOneNews.title}</span><br /><span style="font-size:11px">Posted at {$arrOneNews.reg_date|date_format:"%m/%d/%Y, %H:%M"}</span></td>
+</tr>
+<tr>
+	<td class="content">
+{if $arrOneNews.image ne ""}<img src="{$URL_UPLOADS}/{$arrOneNews.image}" align="left" style="padding:5px; max-width:220px; margin:0px 10px 10px 0px;">{/if}
+{$arrOneNews.content}
+	</td>
+</tr>
+</table>
+<br />&nbsp;
+</div>

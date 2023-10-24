@@ -1,0 +1,24 @@
+Đăng ký đặt bàn thành công
+====
+<html>
+<body>
+&lt;p&gt;Ch&amp;agrave;o bạn,&lt;/p&gt;
+
+&lt;p&gt;Cảm ơn bạn đ&amp;atilde; gửi th&amp;ocirc;ng tin đặt b&amp;agrave;n tới &lt;b&gt;%SITE_NAME%&lt;/b&gt;.&lt;/p&gt;
+
+&lt;p&gt;Email đăng k&amp;yacute; của bạn l&amp;agrave;: %C_EMAIL%&lt;/p&gt;
+
+&lt;p&gt;Nếu bạn cần biết th&amp;ecirc;m th&amp;ocirc;ng tin xin vui l&amp;ograve;ng li&amp;ecirc;n hệ với ch&amp;uacute;ng t&amp;ocirc;i qua website.&lt;/p&gt;
+
+&lt;p&gt;Tr&amp;acirc;n trọng,&lt;br /&gt;
+&lt;br /&gt;
+&lt;strong&gt;Bộ phận Chăm s&amp;oacute;c Kh&amp;aacute;ch h&amp;agrave;ng&lt;/strong&gt;&lt;br /&gt;
+Email: customer@ClientWebsite | Hotline: 19006868 | Hỗ trợ: 24/7 (từ 08h-18h, trừ CN)&lt;/p&gt;
+
+&lt;p&gt;-----&lt;/p&gt;
+
+&lt;p style=&quot;color:red&quot;&gt;&lt;small&gt;Hệ thống gửi mail của %SITE_NAME%&#33;&#33;&#33;&lt;br /&gt;
+Đ&amp;acirc;y l&amp;agrave; email trả lời tự động, vui l&amp;ograve;ng kh&amp;ocirc;ng trả lời email n&amp;agrave;y&#33;&#33;&#33;&lt;/small&gt;&lt;/p&gt;
+
+</body>
+</html>

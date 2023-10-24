@@ -1,0 +1,24 @@
+Kích hoạt thành công tài khoản tại koseionline.vn
+====
+<html>
+<body>
+<p>Chào bạn %FULL_NAME%,</p>
+
+<p style="color:blue"><strong>Email này gửi tới bạn để xác nhận bạn đã kích hoạt thành công tài khoản tại %SITE_NAME%</strong>.</p>
+
+<p>Bây giờ bạn có thể <a href="http://ClientWebsite/login" target="_blank"><strong>Đăng nhập</strong></a>.</p>
+
+<p>- Tài khoản của bạn: <b>%USER_NAME%</b></p>
+
+<p>- Mật khẩu: <b>******</b> <i>(nếu quên, xem ở email đăng ký)</i></p>
+
+<p>Nếu bạn cần biết thêm thông tin xin vui lòng liên hệ với chúng tôi qua website.</p>
+
+<p>Trân trọng,&nbsp;<strong>Bộ phận Chăm sóc Khách hàng</strong>&nbsp;Email: nhatngukosei@gmail.com | Hotline: 0966 026 133 - 0246 6868 362&nbsp;| Hỗ trợ: 24/7 (từ 08h- 21h, trừ CN)</p>
+
+<p>-----</p>
+
+<p style="color:red"><small>Hệ thống gửi mail của ClientWebsite!!! Đây là email trả lời tự động, vui lòng không trả lời email này!!!</small></p>
+
+</body>
+</html>

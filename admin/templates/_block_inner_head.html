@@ -1,0 +1,18 @@
+<div class="inner_head_title">
+	<div class="container-fluid">
+  		<div class="row mt-1">
+  			<div class="col-sm">
+  				{if $clsCP->getImgSrc() ne ""}
+  				<a href="?mod={$mod}" class="float-left float-md-left text-center text-md-left mr-1"><img src="{$clsCP->getImgSrc()}" border="0"/></a>
+  				{/if}
+  				<span class="title1">{if $_LANG_ID ne "vn"}{$clsDataGrid->getTitle()}{else}{$clsDataGrid->getTitle()}{/if}</span><br />
+				<span class="title2">{if $_LANG_ID ne "vn"}{$clsDataGrid->getTitle()} {$core->getLang("Management")}{else}{$core->getLang("Management")} {$clsDataGrid->getTitle()}{/if} ({$lang_code_name})</span>
+  			</div>
+  			<div class="col-sm text-center text-md-right align-middle">
+  				<div class="mt-2 mb-1">
+  				{$clsButtonNav->render()}
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+</div>

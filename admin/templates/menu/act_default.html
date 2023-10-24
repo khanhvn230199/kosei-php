@@ -1,0 +1,29 @@
+{include file="_block_inner_head.html"}
+<form name="theForm" action="{if $smarty.get.menu_id eq ''}?mod={$mod}{/if}" method="post" id="theForm">
+<table width="100%" border="0">
+<tr>
+<td style="padding:10px">
+	<div style="font-size:14px; float:left">
+	<strong>{$core->getLang("ListOf")} {$clsDataGrid->getTitle()}</strong>
+	<select name="mtype" id="mtype" onchange="return submitform();">
+	{$htmlOptionsMenu}
+	</select>	
+	</div>
+	<div style="float:right;font-size:12px; color:blue" align="right">
+	Ngôn ngữ: {$lang_code_name}
+	</div>
+</td>
+</tr>
+<tr>
+	<td style="padding:0px 10px" width="100%" valign="top">
+	<div class="navpath">{$core->getLang("You_are_at")}: {$menuPathAdmin}</div>
+	{$clsDataGrid->showDataGrid("theForm")}
+	</td>
+</tr>
+<tr>
+	<td  style="padding:0px 10px">
+	{$clsDataGrid->showPaging("theForm")}
+	</td>
+</tr>
+</table>
+</form>

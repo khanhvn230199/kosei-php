@@ -1,0 +1,36 @@
+Đặt dịch vụ thành công (#%ORDER_CODE%)
+====
+<html>
+<body>
+&lt;p&gt;Ch&amp;agrave;o Qu&amp;yacute; kh&amp;aacute;ch %C_FULLNAME%,&lt;/p&gt;
+
+&lt;p&gt;&lt;span&gt;Cảm ơn &lt;/span&gt;Qu&amp;yacute; kh&amp;aacute;ch &lt;span&gt;đ&amp;atilde; đặt tour (dịch vụ) tại &lt;strong&gt;Du lịch biển Ph&amp;uacute; Qu&amp;yacute;&lt;/strong&gt;. Th&amp;ocirc;ng tin đặt tour (dịch vụ) của &lt;/span&gt;Qu&amp;yacute; kh&amp;aacute;ch &lt;span&gt;như sau:&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span&gt;- M&amp;atilde; đặt: &lt;strong&gt;%ORDER_CODE%&lt;/strong&gt;&lt;/span&gt;&lt;br /&gt;
+- Phương thức thanh to&amp;aacute;n: &lt;strong&gt;%PAYMENT_METHOD%&lt;/strong&gt;&lt;br /&gt;
+- Tổng gi&amp;aacute; trị đơn h&amp;agrave;ng: &lt;strong&gt;%TOTAL_COST%&lt;/strong&gt;&lt;br /&gt;
+- Tổng số sản phẩm: &lt;strong&gt;%TOTAL_ITEM%&lt;/strong&gt;&lt;br /&gt;
+- Ng&amp;agrave;y giờ đặt h&amp;agrave;ng: &lt;strong&gt;%ORDER_DATE%&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;- &lt;/strong&gt;Họ t&amp;ecirc;n người đặt: %C_FULLNAME%&lt;br /&gt;
+&lt;strong&gt;- &lt;/strong&gt;Số đt người đặt: %C_PHONE%&lt;br /&gt;
+&lt;strong&gt;- &lt;/strong&gt;Địa chỉ người đặt: %C_ADDRESS%&lt;br /&gt;
+&lt;strong&gt;- &lt;/strong&gt;Email người đặt: %C_EMAIL%&lt;br /&gt;
+&lt;strong&gt;- &lt;/strong&gt;Ghi ch&amp;uacute; người đặt: %C_NOTE%&lt;br /&gt;
+- Danh s&amp;aacute;ch sản phẩm đ&amp;atilde; đặt:&lt;/p&gt;
+
+&lt;p&gt;%ORDER_LIST%&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Xin lưu &amp;yacute; h&amp;atilde;y giữ điện thoại li&amp;ecirc;n lạc th&amp;ocirc;ng suốt để ch&amp;uacute;ng t&amp;ocirc;i gọi lại x&amp;aacute;c nhận đơn h&amp;agrave;ng. Xin cảm ơn Qu&amp;yacute; kh&amp;aacute;ch.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Tr&amp;acirc;n trọng,&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Bộ phận CSKH:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Email: customer@ClientWebsite | Hotline: 19006868 | Hỗ trợ: 24/7 (từ 08h-18h, trừ CN)&lt;/p&gt;
+
+&lt;p&gt;-----&lt;/p&gt;
+
+&lt;p style=&quot;color:red&quot;&gt;&lt;small&gt;Hệ thống gửi mail của %SITE_NAME%&#33;&#33;&#33; Đ&amp;acirc;y l&amp;agrave; email trả lời tự động, vui l&amp;ograve;ng kh&amp;ocirc;ng trả lời email n&amp;agrave;y&#33;&#33;&#33;&lt;/small&gt;&lt;/p&gt;
+
+</body>
+</html>

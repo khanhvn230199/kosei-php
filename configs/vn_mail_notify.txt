@@ -1,0 +1,24 @@
+KOSEI Thông báo thời gian thi thử
+====
+<html>
+<body>
+<p>Thông báo từ %SITE_NAME%</p>
+
+<p>Bạn nhận được thông báo này vì bạn đã đăng ký kỳ thi thử tại&nbsp;<a href="https://koseionline.vn/">https://koseionline.vn/</a></p>
+
+<p>-------------------------------------------------------------------------------------------------------------------------</p>
+
+<p>Thời gian thi thử: <strong>Từ 9h ngày 03/06/2023&nbsp;đến 24h ngày 04/06/2023</strong>&nbsp;(Trong thời gian này bạn có thể vào thi bất kỳ lúc nào)</p>
+
+<p>Vui lòng truy cập vào đường link:&nbsp;<strong><a href="https://koseionline.vn/trial-test">https://koseionline.vn/trial-test</a></strong>&nbsp;, đăng nhập và làm bài thi thử</p>
+
+<p>Kosei chúc bạn đạt được kết quả cao nhất và tự tin bước vào kỳ thi thật sắp tới.</p>
+
+<p>-------------------------------------------------------------------------------------------------------------------------</p>
+
+<p>Trân trọng,&nbsp;<strong>Bộ phận Chăm sóc Khách hàng</strong>&nbsp;Email: nhatngukosei@gmail.com | Hotline: 0966 026 133 - 0246 6868 362&nbsp;| Hỗ trợ: 24/7 (từ 08h- 21h, trừ CN)</p>
+
+<p>Gửi lúc: %SENT_DATE%</p>
+
+</body>
+</html>

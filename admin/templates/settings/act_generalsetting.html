@@ -1,0 +1,183 @@
+{$clsForm->showJS()}
+<div class="inner_head_title">
+    <table cellpadding="0" cellspacing="0" width="100%" border="0">
+        <tr style="background:#FBFBFB">
+            <td width="55px" style="padding:5px;">
+                <a href="?mod={$mod}"><img src="{$ADMIN_URL_IMAGES}/largeicon/config.png" border="0"/></a>
+            </td>
+            <td>
+                <span class="title1">{$core->getLang("GeneralSettings")}</span><br/>
+                <span class="title2">{$core->getLang("GeneralSettings")} ({$lang_code_name})</span>
+            </td>
+            <td style="padding:5px;" align="right">
+                {$clsButtonNav->render()}
+            </td>
+        </tr>
+    </table>
+</div>
+<form name="theForm" action="" method="post" id="theForm">
+    <table width="100%" border="0">
+        <tr>
+            <td style="padding:10px">
+                <div style="padding-bottom:5px;font-size:14px; float:left">
+                    <strong>{$core->getLang("GeneralSettings")}</strong>
+                </div>
+                <div style="float:right;font-size:12px; width:30%; color:blue" align="right">
+                    Ngôn ngữ: {$lang_code_name}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:0px 10px" width="100%" valign="top">
+                <table cellpadding="0" cellspacing="0" width="100%" border="0" class="girdtable">
+                    <tr>
+                        <td colspan="2" class="gridheader1">{$core->getLang("InputCorrectlyAllBelowFields")}</td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow" width="30%">{$core->getLang("SiteTitle")}</td>
+                        <td class="gridrow1">
+                            <input type="text" name="site_title" value="{$site_title}" style="width:50%"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow" width="30%">{$core->getLang("Logo")}
+                            <small>(Logo của website)</small>
+                        </td>
+                        <td class="gridrow1">
+                            {$clsForm->showInput("site_logo")}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow" width="30%">{$core->getLang("Favicon")}
+                            <small>(Hiển thị trên thanh bar của trình duyệt)</small>
+                        </td>
+                        <td class="gridrow1">
+                            {$clsForm->showInput("site_favicon")}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow">{$core->getLang("SiteName")}</td>
+                        <td class="gridrow1">
+                            <input type="text" name="site_name" value="{$site_name}" style="width:50%"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow">Tên công ty/tổ chức</td>
+                        <td class="gridrow1">
+                            <input type="text" name="site_comname" value="{$site_comname}" style="width:50%"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow">{$core->getLang("Phone")}
+                            <small>(Có nhiều thì dùng dấu ; để ngăn cách)</small>
+                        </td>
+                        <td class="gridrow1">
+                            <input type="text" name="site_phone" value="{$site_phone}" style="width:50%"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow">{$core->getLang("Hotline")}
+                            <small>(Có nhiều thì dùng dấu ; để ngăn cách)</small>
+                        </td>
+                        <td class="gridrow1">
+                            <input type="text" name="site_hotline" value="{$site_hotline}" style="width:50%"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow">{$core->getLang("Email")}
+                            <small>(Có nhiều thì dùng dấu ; để ngăn cách)</small>
+                        </td>
+                        <td class="gridrow1">
+                            <input type="text" name="site_email" value="{$site_email}" style="width:50%"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow">{$core->getLang("Address")}</td>
+                        <td class="gridrow1">
+                            <input type="text" name="site_address" value="{$site_address}" style="width:50%"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow">{$core->getLang("Copyright_text")}</td>
+                        <td class="gridrow1">
+                            <input type="text" name="copyright" value="{$copyright}" style="width:99%"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow" width="30%">{$core->getLang('Điều khoản đăng ký')}</td>
+                        <td class="gridrow1">
+                            {$clsForm->showInput("terms_of_use")}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow" width="30%">{$core->getLang('Thông tin giới thiệu')}</td>
+                        <td class="gridrow1">
+                            {$clsForm->showInput("about")}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow" width="30%">{$core->getLang('Thông tin liên hệ')}</td>
+                        <td class="gridrow1">
+                            {$clsForm->showInput("contact_info")}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow" width="30%">{$core->getLang('Thông tin chân trang')}</td>
+                        <td class="gridrow1">
+                            {$clsForm->showInput("footer_info")}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow2" style="color:red">{$core->getLang("Do_you_close_website")}?</td>
+                        <td class="gridrow3" style="color:red" valign="top">
+                            <select name="is_close_site" class="content">
+                                <option value="1" {if $is_close_site==1}selected{/if}>
+                                    {$core->getLang("Yes_For_maintenance")}
+                                </option>
+                                <option value="0" {if $is_close_site==0}selected{/if}>
+                                    {$core->getLang("No_Active_normally")}
+                                </option>
+                            </select>
+                            <div id="close_site_notice_id" style="display:none; padding-top:10px">
+                                {$core->getLang("Notification_when_closing")}:
+                                {$clsForm->showInput("close_site_notice")}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="gridheader1">{$core->getLang("SMTP_Setting")}</td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow">{$core->getLang("Webmaster_email")}</td>
+                        <td class="gridrow1">
+                            <input type="text" name="webmaster_email" value="{$webmaster_email}" style="width:50%"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow">{$core->getLang("SMTP_Server")} / Port</td>
+                        <td class="gridrow1">
+                            <input type="text" name="smtp_server" value="{$smtp_server}" style="width:50%"
+                                   placeholder="vd: smtp.gmail.com"/>
+                            <input type="text" name="smtp_port" value="{$smtp_port}" style="width:50px" maxlength="4"
+                                   placeholder="vd: 465"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow">{$core->getLang("SMTP_Username")}</td>
+                        <td class="gridrow1">
+                            <input type="text" name="smtp_user" value="{$smtp_user}" style="width:50%" autocomplete="Off" placeholder="vd: abc@gmail.com"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gridrow">{$core->getLang("SMTP_Password")}</td>
+                        <td class="gridrow1">
+                            <input type="password" name="smtp_pass" value="{$smtp_pass}" autocomplete="Off" style="width:50%"
+                                   placeholder="mật khẩu *****"/>
+                        </td>
+                    </tr>
+                </table>
+                <em><font style="font-size:10px">{$core->getLang("Note")}: * {$core->getLang("isrequired")}</font></em>
+            </td>
+        </tr>
+    </table>
+</form>

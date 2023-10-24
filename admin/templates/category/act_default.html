@@ -1,0 +1,50 @@
+{include file="_block_inner_head.html"}
+<form name="theForm" action="" method="post" id="theForm">
+    <table width="100%" border="0">
+        <tr>
+            <td style="padding:10px">
+                <div style="font-size:14px; float:left; width:30%">
+                    <strong>{$core->getLang("ListOf")} {$clsDataGrid->getTitle()}</strong>
+                    <select id="ctype" name="ctype" style="color:#d12229" onchange="change_category_ctype();">
+                        {$htmlOptionsCtype}
+                    </select>
+                </div>
+                <div style="float:left; width:38%; text-align:center">
+                    Hiển thị:
+                    {if $view_type eq "group"}
+                    <strong><img src="{$ADMIN_URL_IMAGES}/checked.png"/> Theo nhóm</strong> | <a
+                        href="?mod={$mod}&view_type=tree">Tree View</a> | <a href="?mod={$mod}&view_type=all">Tất cả</a>
+                    {elseif $view_type eq 'all'}
+                    <a href="?mod={$mod}&view_type=group">Theo nhóm</a> | <a href="?mod={$mod}&view_type=tree">Tree
+                    View</a> | <strong><img src="{$ADMIN_URL_IMAGES}/checked.png"/> Tất cả</strong>
+                    {else}
+                    <a href="?mod={$mod}&view_type=group">Theo nhóm</a> | <strong><img
+                        src="{$ADMIN_URL_IMAGES}/checked.png"/> Tree View</strong> | <a
+                        href="?mod={$mod}&view_type=all">Tất cả</a>
+                    {/if}
+                </div>
+                <div style="float:right;font-size:12px; width:30%; color:blue" align="right">
+                    Ngôn ngữ: {$lang_code_name}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:0px 10px" width="100%" valign="top">
+                {if $view_type eq 'group'}
+                <div class="navpath">Bạn đang ở: {$catPathAdmin}</div>
+                {$clsDataGrid->showDataGrid("theForm")}
+                {elseif $view_type eq 'all'}
+                {$clsDataGrid->showDataGrid("theForm")}
+                {/if}
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:0px 10px">
+                {$clsDataGrid->showPaging("theForm")}
+            </td>
+        </tr>
+    </table>
+</form>
+{if $view_type eq 'tree'}
+{include file="$mod/act_tree.html"}
+{/if}

@@ -1,0 +1,33 @@
+{include file="_block_inner_head.html"}
+<form name="theForm" action="{$base_url}" method="post" id="theForm">
+    <table width="100%" border="0">
+        <tr>
+            <td style="padding:10px">
+                <div style="font-size:14px; float:left; width:30%">
+                    <strong>{$core->getLang("ListOf")} {$clsDataGrid->getTitle()}</strong>
+                </div>
+                <div style="float:left; width:38%; text-align:center">
+                    <input type="text" value="{$skeyword}" name="skeyword" placeholder="{$core->getLang('Keyword')}"/>
+                    <select name="scatid">
+                        <option value="">--- {$core->getLang("Course")} ---</option>
+                        {$scatid_options}
+                    </select>
+                    <input type="submit" value="{$core->getLang('Search')}" name="searchBtn"/>
+                </div>
+                <div style="float:right;font-size:12px; width:30%; color:blue" align="right">
+                    Ngôn ngữ: {$lang_code_name}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:0px 10px" width="100%" valign="top">
+                {$clsDataGrid->showDataGrid("theForm")}
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:0px 10px">
+                {$clsDataGrid->showPaging("theForm")}
+            </td>
+        </tr>
+    </table>
+</form>
